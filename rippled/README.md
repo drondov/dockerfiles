@@ -1,4 +1,4 @@
-# Ripple demon
+# Ripple daemon
 
 ### Getting started
 ```
