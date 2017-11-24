@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  postgres_db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "555666"
+  stellar_core:
+    depends_on:
+      - postgres_db
+    build:
+      context: .
+      dockerfile: ./StellarCore.Dockerfile
+    ports:
+       - "11626:11626"
+       - "11625:11625"
+  horizon:
+    depends_on:
+      - stellar_core
+    build:
+      context: .
+      dockerfile: ./Horizon.Dockerfile
+    ports:
+     - "8000:8000"
