@@ -1,0 +1,16 @@
+FROM zcash-regtest:latest
+
+MAINTAINER Pavlo Melnyk <pavlik1.618@gmail.com>
+
+RUN	mkdir /root/.zcash
+WORKDIR /root/.zcash
+
+RUN	echo "rpcuser=zu" > zcash.conf && \
+	echo "rpcpasseord=zp" > zcash.conf && \
+	# echo "gen=1" > zcash.conf && \
+	echo "regtest=1" > zcash.conf && \
+	cat zcash.conf
+
+EXPOSE 8232
+
+ENTRYPOINT zcashd
